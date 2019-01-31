@@ -25,6 +25,16 @@ app.get('/projects', async (req, res) => {
   res.send(projects);
 })
 
+app.post('/todolist', async (req, res) => {
+  const projectId = req.body && req.body.projectId || 0;
+  const todolistId = req.body && req.body.todolistId || 0;
+  const todolist = await basecamp.buckets.bucketId.todolists.todolistId.todos.json.get({
+    "bucketId": projectId,
+    "todolistId": todolistId
+  })
+  res.send(todolist);
+})
+
 app.post('/todoset', async (req, res) => {
   const projectId = req.body && req.body.projectId || 0;
   const todosetId = req.body && req.body.todosetId || 0;
