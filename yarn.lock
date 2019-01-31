@@ -10,10 +10,10 @@
     debug "^2.6.3"
     regenerator-runtime "^0.10.3"
 
-"@datafire/basecamp@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@datafire/basecamp/-/basecamp-2.0.0.tgz#015ed5c120c435347367209f3cee85829fbf8d33"
-  integrity sha512-TTePyFplZEKZZoTgkiMNH7/jeJTY/enrl/lLnUj9CBy1bcYcNcHs+cCheK1YqqdDzVR3A6p8WKAWAXXxfTluYg==
+"@jjperezaguinaga/basecamp@2.0.2-basecamp.patch.23":
+  version "2.0.2-basecamp.patch.23"
+  resolved "https://registry.yarnpkg.com/@jjperezaguinaga/basecamp/-/basecamp-2.0.2-basecamp.patch.23.tgz#bde2be99041f3d573b0ae106c614d8350e2fabfe"
+  integrity sha512-z1GYHVJ5W9agynYUsyYkPMPhggYmaCrv+xKLtv7JEH70Sqtsy2n2V9bfZhUy9EL4J20AYwJPu2m6mKJSeiMM1w==
   dependencies:
     datafire "^2.0.0"
 

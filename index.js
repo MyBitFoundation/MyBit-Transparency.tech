@@ -5,7 +5,7 @@ const cors = require('cors')
 const accessToken = process.env.ACCESS_TOKEN;
 const accountId = process.env.ACCOUNT_ID;
 
-const basecamp = require('@datafire/basecamp').create({
+const basecamp = require('@jjperezaguinaga/basecamp').create({
   access_token: accessToken,
   account_id: accountId,
 })
@@ -28,7 +28,9 @@ app.get('/projects', async (req, res) => {
 app.post('/todolist', async (req, res) => {
   const projectId = req.body && req.body.projectId || 0;
   const todolistId = req.body && req.body.todolistId || 0;
+  const completed = req.body && req.body.completed || false;
   const todolist = await basecamp.buckets.bucketId.todolists.todolistId.todos.json.get({
+    "completed": completed,
     "bucketId": projectId,
     "todolistId": todolistId
   })
