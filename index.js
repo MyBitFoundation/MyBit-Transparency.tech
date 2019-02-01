@@ -37,6 +37,27 @@ app.post('/todolist', async (req, res) => {
   res.send(todolist);
 })
 
+app.post('/question', async(req, res) => {
+  const projectId = req.body && req.body.projectId || 0;
+  const questionId = req.body && req.body.questionId || 0;
+  const answers = await basecamp.buckets.bucketId.questions.questionId.answers.json.get({
+    "bucketId": projectId,
+    "questionId": questionId
+  })
+  res.send(answers);
+})
+
+app.post('/questionnaire', async (req, res) => {
+  const projectId = req.body && req.body.projectId || 0;
+  const questionnaireId = req.body && req.body.questionnaireId || 0;
+  const questionnaire = await basecamp.buckets.bucketId.questionnaires.questionnaireId.questions.json.get({
+    "bucketId": projectId,
+    "questionnaireId": String(questionnaireId)
+  })
+  res.send(questionnaire);
+})
+
+
 app.post('/todoset', async (req, res) => {
   const projectId = req.body && req.body.projectId || 0;
   const todosetId = req.body && req.body.todosetId || 0;
