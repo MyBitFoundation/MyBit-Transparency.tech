@@ -57,6 +57,15 @@ app.post('/questionnaire', async (req, res) => {
   res.send(questionnaire);
 })
 
+app.post('/vault', async (req, res) => {
+  const projectId = req.body && req.body.projectId || 0;
+  const vaultId = req.body && req.body.vaultId || 0;
+  const vault = await basecamp.buckets.bucketId.vaults.vaultId.documents.json.get({
+    "bucketId": projectId,
+    "vaultId": String(vaultId)
+  })
+  res.send(vault)
+})
 
 app.post('/todoset', async (req, res) => {
   const projectId = req.body && req.body.projectId || 0;
