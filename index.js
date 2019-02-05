@@ -57,6 +57,16 @@ app.post('/questionnaire', async (req, res) => {
   res.send(questionnaire);
 })
 
+app.post('/document', async (req, res) => {
+  const projectId = req.body && req.body.projectId || 0;
+  const documentId = req.body && req.body.documentId || 0;
+  const document = await basecamp.buckets.bucketId.documents.documentId.json.get({
+    "bucketId": projectId,
+    "documentId": String(documentId)
+  })
+  res.send(document)
+})
+
 app.post('/vault', async (req, res) => {
   const projectId = req.body && req.body.projectId || 0;
   const vaultId = req.body && req.body.vaultId || 0;
