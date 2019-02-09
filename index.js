@@ -57,6 +57,26 @@ app.post('/questionnaire', async (req, res) => {
   res.send(questionnaire);
 })
 
+app.post('/comments', async(req, res) => {
+  const projectId = req.body && req.body.projectId || 0;
+  const commentId = req.body && req.body.commentId || 0;
+  const comments = await basecamp.buckets.bucketId.recordings.recordingId.comments.json.get({
+    "bucketId": projectId,
+    "recordingId": String(commentId)
+  })
+  res.send(comments);
+})
+
+app.post('/message_board', async(req, res) => {
+  const projectId = req.body && req.body.projectId || 0;
+  const messageBoardId = req.body && req.body.messageBoardId || 0;
+  const messages = await basecamp.buckets.bucketId.message_boards.message_boardId.messages.json.get({
+    "bucketId": projectId,
+    "message_boardId": String(messageBoardId)
+  })
+  res.send(messages);
+})
+
 app.post('/document', async (req, res) => {
   const projectId = req.body && req.body.projectId || 0;
   const documentId = req.body && req.body.documentId || 0;
