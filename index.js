@@ -5,7 +5,7 @@ const cors = require('cors')
 const accessToken = process.env.ACCESS_TOKEN;
 const accountId = process.env.ACCOUNT_ID;
 
-const basecamp = require('@jjperezaguinaga/basecamp').create({
+const basecamp = require('@datafire/basecamp').create({
   access_token: accessToken,
   account_id: accountId,
 })
@@ -75,6 +75,16 @@ app.post('/message_board', async(req, res) => {
     "message_boardId": String(messageBoardId)
   })
   res.send(messages);
+})
+
+app.post('/message', async (req, res) => {
+  const projectId = req.body && req.body.projectId || 0;
+  const messageId = req.body && req.body.messageId || 0;
+  const message = await basecamp.buckets.bucketId.messages.messageId.json.get({
+    "bucketId": projectId,
+    "messageId": String(messageId)
+  })
+  res.send(message)
 })
 
 app.post('/document', async (req, res) => {
