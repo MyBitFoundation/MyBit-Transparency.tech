@@ -97,6 +97,26 @@ app.post('/document', async (req, res) => {
   res.send(document)
 })
 
+app.post('/inboxes', async (req, res) => {
+  const projectId = req.body && req.body.projectId || 0;
+  const inboxeId = req.body && req.body.inboxeId || 0;
+  const document = await basecamp.buckets.bucketId.inboxes.inboxeId.forwards.json.get({
+    "bucketId": projectId,
+    "inboxeId": String(inboxeId)
+  })
+  res.send(document)
+})
+
+app.post('/email_forward', async (req, res) => {
+  const projectId = req.body && req.body.projectId || 0;
+  const emailForwardId = req.body && req.body.emailForwardId || 0;
+  const emailForward = await basecamp.buckets.bucketId.inbox_forwards.inbox_forwardId.json.get({
+    "bucketId": projectId,
+    "inbox_forwardId": String(emailForwardId)
+  })
+  res.send(emailForward)
+})
+
 app.post('/vault', async (req, res) => {
   const projectId = req.body && req.body.projectId || 0;
   const vaultId = req.body && req.body.vaultId || 0;
