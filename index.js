@@ -40,9 +40,11 @@ app.post('/todolist', async (req, res) => {
 app.post('/question', async(req, res) => {
   const projectId = req.body && req.body.projectId || 0;
   const questionId = req.body && req.body.questionId || 0;
+  const pageNumber = req.body && req.body.pageNumber || 1;
   const answers = await basecamp.buckets.bucketId.questions.questionId.answers.json.get({
     "bucketId": projectId,
-    "questionId": questionId
+    "questionId": questionId,
+    "page": pageNumber
   })
   res.send(answers);
 })
